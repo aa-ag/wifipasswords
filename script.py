@@ -1,14 +1,14 @@
 import subprocess
 
-# define command, as string
-command = 'ls -ltr'
-
-# execute command using shell
-# Popen class: underlyng process creation
-sp = subprocess.Popen(command, shell=True)
-
-# store return code in variable
+cmd = 'ping -c 5 google.com'
+sp = subprocess.Popen(cmd,
+                      shell=True,
+                      stdout=subprocess.PIPE,
+                      stderr=subprocess.PIPE)
 rc = sp.wait()
 
-# print contents
-print(sp)
+out, err = sp.communicate()
+
+print('rc:', rc, '\n')
+print('output: \n', out)
+print('error: \n', err)
