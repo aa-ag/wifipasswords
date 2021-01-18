@@ -1,3 +1,5 @@
-'''
-security find-generic-password - ga WIFI NAME | grep “password: ”
-'''
+import os
+import settings
+
+os.system(
+    f'security find-generic-password -ga {settings.ROUTER} | grep "password:"')
